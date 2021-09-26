@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Book from "../components/Book";
+import Button from "../components/Button";
 import catalog from "../assets/catalog";
 
 class Library extends Component {
@@ -29,7 +30,7 @@ class Library extends Component {
               genre={item.genre}
               checkout={item.checkout}
             ></Book>
-            <button type="submit">Borrow</button>
+            <Button checkout={item.checkout}/>
             </div>
             
           );

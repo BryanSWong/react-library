@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 
 const Book = (props) => {
-
-    const [borrowed, setBorrowed] = useState(props.checkout);
 
     return (
         <div id={props.id}>
@@ -16,4 +14,4 @@ const Book = (props) => {
     );
 };
 
-export default book;
+export default Book;
