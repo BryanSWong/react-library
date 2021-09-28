@@ -1,6 +1,7 @@
-import withAuth from "../auth/withAuth";
-import { useUser } from "../auth/useUser";
-import Library from "../components/Library";
+import React from 'react';
+import withAuth from '../auth/withAuth';
+import { useUser } from '../auth/useUser';
+import Library from '../components/Library';
 
 const Private = () => {
   const { user, logout } = useUser();
@@ -11,7 +12,7 @@ const Private = () => {
       {user?.email && (
         <div>
           <div>Email: {user.email}</div>
-            <Library />
+          <Library />
           <button onClick={() => logout()}>Logout</button>
         </div>
       )}

@@ -1,7 +1,10 @@
-import React, { Component } from "react";
-import Book from "../components/Book";
-import Button from "../components/Button";
-import catalog from "../assets/catalog";
+import React, { Component } from 'react';
+
+import Book from '../components/Book';
+import Button from '../components/Button';
+
+import catalog from '../assets/catalog';
+import genres from '../assets/genres';
 
 class Library extends Component {
   render() {
@@ -11,80 +14,28 @@ class Library extends Component {
       });
     };
 
-    const fiction = "Fiction";
-    const history = "History";
-    const mystery = "Mystery";
-    const scienceFiction = "Science Fiction";
-    const sports = "Sports";
-
     return (
-      <div id="showcase">
-        <h2>Fiction</h2>
-        {genreFilter(fiction).map((item) => {
+      <div>
+        {genres.map(({ id: genreId, genre }) => {
           return (
-            <div key={item.id} >
-            <Book
-              thumb={item.thumb}
-              title={item.title}
-              author={item.author}
-              genre={item.genre}
-              checkout={item.checkout}
-            ></Book>
-            <Button checkout={item.checkout}/>
+            <div key={genreId}>
+              <h2>{genre}</h2>
+              {genreFilter(genre).map((book) => {
+                return (
+                  <div key={book.id}>
+                    <Book
+                      key={book.id}
+                      thumb={book.thumb}
+                      title={book.title}
+                      author={book.author}
+                      genre={book.genre}
+                      checkout={book.checkout}
+                    />
+                    <Button buttonType='Checkout' />
+                  </div>
+                );
+              })}
             </div>
-            
-          );
-        })}
-        <h2>History</h2>
-        {genreFilter(history).map((item) => {
-          return (
-            <Book
-              key={item.id}
-              thumb={item.thumb}
-              title={item.title}
-              author={item.author}
-              genre={item.genre}
-              checkout={item.checkout}
-            ></Book>
-          );
-        })}
-        <h2>Mystery</h2>
-        {genreFilter(mystery).map((item) => {
-          return (
-            <Book
-              key={item.id}
-              thumb={item.thumb}
-              title={item.title}
-              author={item.author}
-              genre={item.genre}
-              checkout={item.checkout}
-            ></Book>
-          );
-        })}
-        <h2>Science Fiction</h2>
-        {genreFilter(scienceFiction).map((item) => {
-          return (
-            <Book
-              key={item.id}
-              thumb={item.thumb}
-              title={item.title}
-              author={item.author}
-              genre={item.genre}
-              checkout={item.checkout}
-            ></Book>
-          );
-        })}
-        <h2>Sports</h2>
-        {genreFilter(sports).map((item) => {
-          return (
-            <Book
-              key={item.id}
-              thumb={item.thumb}
-              title={item.title}
-              author={item.author}
-              genre={item.genre}
-              checkout={item.checkout}
-            ></Book>
           );
         })}
       </div>

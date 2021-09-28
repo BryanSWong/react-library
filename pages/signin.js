@@ -1,3 +1,4 @@
+import React from 'react';
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from 'firebase/app';
 import 'firebase/auth';
@@ -11,22 +12,22 @@ const firebaseAuthConfig = ({ signInSuccessUrl }) => ({
   signInOptions: [
     {
       provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
-      requireDisplayName: false
+      requireDisplayName: false,
     },
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
   ],
   signInSuccessUrl,
   credentialHelper: 'none',
   callbacks: {
-    signInSuccessWithAuthResult: async ({ user }, redirectUrl) => {
+    signInSuccessWithAuthResult: async ({ user }) => {
       const userData = await mapUserData(user);
       setUserCookie(userData);
-    }
-  }
+    },
+  },
 });
 
 const FirebaseAuth = () => {
-  const signInSuccessUrl = "/private"
+  const signInSuccessUrl = '/private';
   return (
     <div>
       <StyledFirebaseAuth
